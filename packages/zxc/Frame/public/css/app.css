@@ -1,0 +1,81 @@
+body{
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+#content-wrapper{
+    height:20px;
+    overflow:scroll;
+}
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+}
+.disabled{
+    pointer-events: none;
+}
+/*mask*/
+body .mask {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100000;
+    top: -45px;
+    padding-bottom: 45px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+body .mask #loader {
+    color: #ffffff;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+}
+/*nprogress*/
+#nprogress .bar {
+    background: red;
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px red, 0 0 5px red;
+}
+#nprogress .spinner-icon {
+    border-top-color: red;
+    border-left-color: red;
+}
+/*change scrollbar style*/
+::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+}
+::-webkit-scrollbar:hover {
+    background: #eee;
+}
+::-webkit-scrollbar-button {
+    display: none;
+}
+::-webkit-scrollbar-thumb {
+    width: 12px;
+    min-height: 15px;
+    background: rgba(0,0,0,.2);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,.6);
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+/*other*/
+hr.report-header{
+    background-color:#fff;
+    height:1.5px;
+    box-shadow: 0.5px 0.5px 0.5px #999 inset;
+    -moz-box-shadow: 0.5px 0.5px 0.5px #999 inset;
+    -webkit-box-shadow: 0.5px 0.5px 0.5px #999 inset;
+}
+table td,table th{word-break: keep-all;white-space:nowrap;}
