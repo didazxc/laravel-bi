@@ -4,6 +4,7 @@ namespace Zxc\Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Zxc\Blog\Models\Post;
+use Zxc\Blog\Models\Cate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,7 +59,8 @@ class PostController extends Controller
             ]);
         }
         $pjax=$request->pjax();
-        return view('zxcblog::posts.edit',compact('post','pjax'));
+        $cates=Cate::pluck("name","id");
+        return view('zxcblog::posts.edit',compact('post','pjax','cates'));
     }
 
     public function postUpdate(Request $request)
@@ -77,6 +79,7 @@ class PostController extends Controller
             'user_id' => Auth::user()->id,
             'title' => $request->input('title'),
             'text' => $request->input('text'),
+            'cate_id' => $request->input('cate_id')
         ]);
         if($post->save()){
             return $post->id;

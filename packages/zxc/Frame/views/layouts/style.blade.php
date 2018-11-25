@@ -20,10 +20,11 @@
 <link href="https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
 <link href="https://cdn.bootcss.com/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet">
 <link href="https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.24/daterangepicker.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap-select/1.13.3/css/bootstrap-select.min.css" rel="stylesheet">
 <!--自定义CSS-->
 <link href="/packages/zxc/css/app.css" rel="stylesheet">
 @stack('css')
-        <!-- JS -->
+<!-- JS -->
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/lodash.js/4.17.10/lodash.min.js"></script>
 <script src="https://cdn.bootcss.com/admin-lte/2.4.3/js/adminlte.min.js"></script>

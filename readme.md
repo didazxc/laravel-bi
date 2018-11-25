@@ -1,7 +1,7 @@
 
 ## Laravel-BI
 
-####安装方法
+###安装方法
 
 代码下载后
 
@@ -20,4 +20,5 @@ php artisan vendor:publish
 ```
 
 前端访问地址为http://localhost/home
+
 后端访问地址为http://localhost/frame

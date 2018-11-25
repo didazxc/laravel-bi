@@ -1,16 +1,23 @@
 @extends('zxcframe::layouts.app')
 
 @section('content')
-
     <form id="form">
         <div  class="form-inline">
-            <div class="form-group mr-2">
-                <label>标题</label>
+            <div class="input-group mr-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">标题</span>
+                </div>
                 <input type="text" class="form-control" name="title" value="{{$post->title}}">
             </div>
-            <div class="form-group mr-2">
-                <label>分类</label>
-                <input type="text" class="form-control" name="class" value="{{$post->class}}">
+            <div class="input-group mr-2" style="min-width: 200px;">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">分类</span>
+                </div>
+                <select class="form-control" name="cate_id" value="{{$post->cate_id}}" data-live-search="true">
+                    @foreach($cates as $k=>$v)
+                        <option value="{{$k}}">{{$v}}</option>
+                    @endforeach
+                </select>
             </div>
             <button class="btn btn-primary" type="submit">保存</button>
         </div>
@@ -29,15 +36,21 @@
     <script type="application/javascript">
         var rooturl='{{route('zxcblog.edit')}}';
         //新建post时，路径需要根据实际post调整
-        var thisurl="{{route('zxcblog.edit',['post'=>$post->id])}}"
+        var thisurl="{{route('zxcblog.edit',['post'=>$post->id])}}";
         if(thisurl!=window.location.href){
             window.history.pushState({},0,thisurl);
         }
         //等整体页面加载一段时间后再初始化editor组件
         function initEditor() {
             new Vue({el: '#components-demo'});
-        };
+        }
         $(function(){
+            $('.input-group>.bootstrap-select>select').each(function(){
+                var p=$(this).parent();
+                $(this).appendTo(p.parent());
+                p.remove();
+            });
+            $('.input-group>select').selectpicker();
             setTimeout("initEditor()",100);
             $('#form').submit(function(){
                 NProgress.start();

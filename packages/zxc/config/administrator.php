@@ -60,7 +60,7 @@ return array(
      */
     'menu' => [
         '权限管理'=>['users','roles','permissions'],
-        '导航管理'=>['menus'],
+        '导航管理'=>['menus','blogCategories'],
         'KEYLIB管理'=>['keyLibDic','keyLibSql','keySqlMail'],
     ],
 

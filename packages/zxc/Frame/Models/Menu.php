@@ -20,6 +20,9 @@ class Menu extends Model
             $this->user_id=Auth::user()->id;
             $this->user_name=Auth::user()->name;
         }
+        if($this->parent_id==$this->id || $this->isAncestorOf(Menu::find($this->parent_id))){
+            $this->parent_id=null;
+        }
         parent::save($options);
     }
 

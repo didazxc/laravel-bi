@@ -30,7 +30,7 @@
                                 <tr data-id="{{$post->id}}">
                                     <td class="text-nowrap">{{$post->title}}</td>
                                     <td class="text-nowrap">{{$post->user->name or ''}}</td>
-                                    <td class="text-nowrap">{{$post->class}}</td>
+                                    <td class="text-nowrap">{{$post->cate->name or ''}}</td>
                                     <td class="text-nowrap">{{$post->created_at}}</td>
                                     <td class="text-nowrap">{{$post->updated_at}}</td>
                                     <td class="text-nowrap">
