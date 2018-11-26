@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">父节点</label>
                             <div class="col-sm-10">
-                                <select  class="form-control" id="inputParentId" name="parent_id">
+                                <select  class="form-control" id="inputParentId" name="parent_id" data-live-search="true">
                                     <option value="1">Root根节点</option>
                                 </select>
                             </div>
@@ -225,7 +225,14 @@
                     $('#inputUrl').val(d['thisnav']['url']);
                     $('#inputFa').val(d['thisnav']['fa']);
                     $('#inputDisable').val(d['thisnav']['disable']);
-                    $pid.multiselect('rebuild');
+                    //$pid.selectpicker();
+                    $('.form-group>div>.bootstrap-select>select').each(function(){
+                        var p=$(this).parent();
+                        $(this).appendTo(p.parent());
+                        p.remove();
+                    });
+                    $('.form-group>div>select').selectpicker();
+
                     $('#newNavModalOverlay').fadeOut(300);
                 }
             });
@@ -295,9 +302,6 @@
                 $("#loader").fadeIn();
                 $(".mask").fadeIn();
                 saveNav();
-            });
-            $('#inputPid').multiselect({
-                enableFiltering: true
             });
             $("#loader").hide();
             $(".mask").hide();

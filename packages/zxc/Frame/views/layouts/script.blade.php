@@ -19,8 +19,6 @@
 <script src="https://cdn.bootcss.com/moment.js/2.14.1/moment.min.js"></script>
 <script src="https://cdn.bootcss.com/moment.js/2.14.1/locale/zh-cn.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js"></script>
-<!--引入multiselect-->
-<script src="https://cdn.bootcss.com/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 <!--引入bootstrap-select-->
 <script src="https://cdn.bootcss.com/bootstrap-select/1.13.3/js/bootstrap-select.min.js"></script>
 <!--引入markdown-->
