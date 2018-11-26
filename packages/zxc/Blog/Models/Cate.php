@@ -22,6 +22,11 @@ class Cate extends Model
         return $this->belongsTo(config('permission.models.permission'),"permission_id","id");
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class,"cate_id","id");
+    }
+
     public function save(array $options = []){
         if(!$this->user_id){
             $this->user_id=Auth::user()->id;

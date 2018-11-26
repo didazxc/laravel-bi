@@ -4,7 +4,7 @@ namespace Zxc\Blog;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-
+use View;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -26,6 +26,8 @@ class BlogServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/views', 'zxcblog');
 
         //Gate::policy(Models\Post::class, Policies\PostPolicy::class);
+        View::composer('zxcblog::layouts.frameapp', '\Zxc\Frame\Http\ViewComposers\AppComposer');
+        View::composer('zxcblog::layouts.aside', '\Zxc\Blog\Http\ViewComposers\MenuComposer');
 
         require __DIR__.'/gatePolicy.php';
     }

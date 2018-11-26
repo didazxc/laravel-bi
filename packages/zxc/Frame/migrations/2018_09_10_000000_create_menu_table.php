@@ -42,7 +42,7 @@ class CreateMenuTable extends Migration
             ['id'=>9    ,'_lft'=>13 ,'_rgt'=>14 ,'parent_id'=>1     ,'name'=>'keysqlManage'         ,'display_name'=>'KEYSQL管理'     ,'url'=>'/keysql/admin/keysql'],
             //前端节点
             ['id'=>10   ,'_lft'=>16 ,'_rgt'=>17 ,'parent_id'=>2     ,'name'=>'testNode'             ,'display_name'=>'测试节点'     ,'url'=>'/frame/test'],
-            ['id'=>11   ,'_lft'=>18 ,'_rgt'=>19 ,'parent_id'=>2     ,'name'=>'blogPosts'            ,'display_name'=>'博客列表'     ,'url'=>'/blog/posts'],
+            ['id'=>11   ,'_lft'=>18 ,'_rgt'=>19 ,'parent_id'=>2     ,'name'=>'blogPosts'            ,'display_name'=>'博客列表'     ,'url'=>'/blog/cateslist'],
             ['id'=>12   ,'_lft'=>20 ,'_rgt'=>23 ,'parent_id'=>2     ,'name'=>'keysqlExample'        ,'display_name'=>'KEYSQL示例'     ,'url'=>''],
             ['id'=>13   ,'_lft'=>21 ,'_rgt'=>22 ,'parent_id'=>12    ,'name'=>'keysqlExampleUserId'  ,'display_name'=>'用户列表'     ,'url'=>'/keysql/1'],
         ]);

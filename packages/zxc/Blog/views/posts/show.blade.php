@@ -1,4 +1,4 @@
-@extends('zxcframe::layouts.app')
+@extends('zxcblog::layouts.frameapp')
 
 @section('content')
 
