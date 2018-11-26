@@ -12,7 +12,7 @@ return array(
         'id'=>array(
             'title' => 'ID',
         ),
-        'name'=>array(
+        'label'=>array(
             'title' => '分类名',
         ),
         'depth'=>array(
@@ -41,7 +41,7 @@ return array(
     ),
 
     'filters' => array(
-        'name'=>array(
+        'label'=>array(
             'title' => '分类名',
             'type' => 'text',
         ),
@@ -61,7 +61,7 @@ return array(
     ),
 
     'edit_fields' => array(
-        'name'=>array(
+        'label'=>array(
             'title' => '分类名',
             'type' => 'text',
         ),
@@ -83,7 +83,7 @@ return array(
      * @type array
      */
     'rules' => array(
-        'name' => 'required|max:255'
+        'label' => 'required|max:255'
     ),
 
     'permission'=> function()

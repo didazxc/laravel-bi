@@ -17,4 +17,9 @@ Route::middleware(Zxc\Frame\Http\Middleware\AdminVerify::class)->group(function(
     Route::post('posts/update/{post?}','PostController@postUpdate')->where('post', '[0-9]+')->name('zxcblog.update');
     //批量删除
     Route::post('posts/destroy','PostController@postDestroy')->name('zxcblog.destroy');
+    //分类管理
+    Route::get('cates','CateController@cates')->name('zxcblog.cates');
+    Route::post('cates','CateController@catesUpdate')->name('zxcblog.catesUpdate');
+    Route::get('cateslist','CateController@index')->name('zxcblog.index');
+    Route::post('cateposts','CateController@catePosts')->name('zxcblog.cateposts');
 });

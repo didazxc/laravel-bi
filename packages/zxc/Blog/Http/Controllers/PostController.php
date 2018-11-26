@@ -13,7 +13,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts=Post::with("user")->orderBy('updated_at','desc')->paginate(5);
+        $posts=Post::with("user")->orderBy('updated_at','desc')->paginate(10);
         return view('zxcblog::posts.index',compact('posts'));
     }
 
@@ -25,7 +25,7 @@ class PostController extends Controller
 
     public function lists()
     {
-        $posts=Post::orderBy('updated_at','desc')->paginate(5);
+        $posts=Post::orderBy('updated_at','desc')->paginate(10);
         return view('zxcblog::posts.lists',compact('posts'));
     }
 
@@ -59,7 +59,7 @@ class PostController extends Controller
             ]);
         }
         $pjax=$request->pjax();
-        $cates=Cate::pluck("name","id");
+        $cates=Cate::pluck("label","id");
         return view('zxcblog::posts.edit',compact('post','pjax','cates'));
     }
 

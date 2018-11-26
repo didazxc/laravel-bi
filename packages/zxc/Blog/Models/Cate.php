@@ -10,7 +10,7 @@ class Cate extends Model
 {
     use NodeTrait;
     protected $table='t_zxc_blog_cate';
-    protected $fillable = ['id','parent_id','user_id','permission_id','description'];
+    protected $fillable = ['id','label','parent_id','user_id','permission_id','description'];
 
     public function user()
     {
@@ -26,7 +26,9 @@ class Cate extends Model
         if(!$this->user_id){
             $this->user_id=Auth::user()->id;
         }
-        if($this->parent_id==$this->id || $this->isAncestorOf(Cate::find($this->parent_id))){
+        if($this->parent_id==$this->id){
+            $this->parent_id=null;
+        }elseif( $this->_lft && in_array($this->parent_id,Cate::where("_lft",">",$this->_lft)->where("_rgt","<",$this->_rgt)->pluck("id")->toArray()) ){
             $this->parent_id=null;
         }
         parent::save($options);

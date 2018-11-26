@@ -13,23 +13,23 @@ class CreateBlogTables extends Migration
      */
     public function up()
     {
+        Schema::create('t_zxc_blog_cate', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('label');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('permission_id')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
+            $table->unsignedInteger('_lft');
+            $table->unsignedInteger('_rgt');
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
         Schema::create('t_zxc_blog_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('cate_id')->nullable();
             $table->string('title');
             $table->text('text');
-            $table->timestamps();
-        });
-        Schema::create('t_zxc_blog_cate', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('permission_id')->nullable();
-            $table->unsignedInteger('parent_id')->nullable();
-            $table->unsignedInteger('_lft');
-            $table->unsignedInteger('_rgt');
-            $table->text('description');
             $table->timestamps();
         });
         Schema::create('t_zxc_blog_comments', function (Blueprint $table) {
