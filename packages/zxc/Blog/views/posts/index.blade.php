@@ -1,7 +1,7 @@
 @extends('zxcframe::layouts.app')
 
 @section('content')
-<div pjax-content>
+
     <div class="row">
         <div class="col-sm-12">
             <div class="box box-primary">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-
+<div pjax-content>
     <div class="d-none">
         <a id="redirect" href="#"></a>
     </div>
