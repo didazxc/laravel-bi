@@ -103,7 +103,7 @@
             if(['BMP','JPG','JPEG','PNG','GIF'].includes(this.uploadExt.toUpperCase())){
                 file='!['+this.fileName+'](/aetherupload/display/'+this.savedPath+' "'+ this.fileName+'")'
             }else{
-                file="["+this.fileName+"("+parseFloat(this.fileSize / (1000 * 1000)).toFixed(2)+"MB)](/aetherupload/download/"+this.savedPath+"/"+this.fileName+")"
+                file=":link:["+this.fileName+"("+parseFloat(this.fileSize / (1000 * 1000)).toFixed(2)+"MB)](/aetherupload/download/"+this.savedPath+"/"+this.fileName+")"
             }
             vuedemo.$children[0].editor.doc.replaceSelection(file)
             $('#file').removeAttr('disabled');

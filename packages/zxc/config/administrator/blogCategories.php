@@ -6,7 +6,7 @@ return array(
 
     'single' => 'cate',
 
-    'model' => Zxc\blog\Models\Cate::class,
+    'model' => Zxc\Blog\Models\Cate::class,
 
     'columns' => array(
         'id'=>array(
