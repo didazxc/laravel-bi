@@ -11,10 +11,16 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts=Post::with("user")->orderBy('updated_at','desc')->paginate(10);
-        return view('zxcblog::posts.index',compact('posts'));
+        $cate_id=$request->input('cate_id',0);
+        $post_query=Post::with("user")->orderBy('updated_at','desc');
+        if($cate_id){
+            $post_query=$post_query->where('cate_id',$cate_id);
+        }
+        $posts=$post_query->paginate(10);
+        $cates=Cate::pluck('label','id');
+        return view('zxcblog::posts.index',compact('posts','cates','cate_id'));
     }
 
     public function show($post_id)
@@ -23,10 +29,16 @@ class PostController extends Controller
         return view('zxcblog::posts.show',compact('post'));
     }
 
-    public function lists()
+    public function lists(Request $request)
     {
-        $posts=Post::orderBy('updated_at','desc')->paginate(10);
-        return view('zxcblog::posts.lists',compact('posts'));
+        $cate_id=$request->input('cate_id',0);
+        $post_query=Post::orderBy('updated_at','desc');
+        if($cate_id){
+            $post_query=$post_query->where('cate_id',$cate_id);
+        }
+        $posts=$post_query->paginate(10);
+        $cates=Cate::pluck('label','id');
+        return view('zxcblog::posts.lists',compact('posts','cates','cate_id'));
     }
 
     public function postDestroy(Request $request)

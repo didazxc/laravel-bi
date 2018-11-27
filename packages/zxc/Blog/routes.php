@@ -2,7 +2,8 @@
 //前台
 Route::middleware(Zxc\Frame\Http\Middleware\MenuVerify::class)->group(function() {
     //展示
-    Route::get('posts', 'PostController@index')->name('zxcblog.home');
+    Route::get('posts', 'PostController@index')->name('zxcblog.index');
+    Route::get('home', 'PostController@index')->name('zxcblog.home');
     Route::get('posts/{post}', 'PostController@show')->where('post', '[0-9]+')->name('zxcblog.show');
 });
 //评论
@@ -11,7 +12,7 @@ Route::post('comments/add/{post}', 'CommentController@postComment')->where('post
 
 //后台
 Route::middleware(Zxc\Frame\Http\Middleware\AdminVerify::class)->group(function(){
-    Route::get('lists','PostController@lists')->name('zxcblog.admin');
+    Route::get('lists','PostController@lists')->name('zxcblog.lists');
     //新建或更新
     Route::get('posts/edit/{post?}','PostController@edit')->where('post', '[0-9]+')->name('zxcblog.edit');
     Route::post('posts/update/{post?}','PostController@postUpdate')->where('post', '[0-9]+')->name('zxcblog.update');
@@ -20,6 +21,6 @@ Route::middleware(Zxc\Frame\Http\Middleware\AdminVerify::class)->group(function(
     //分类管理
     Route::get('cates','CateController@cates')->name('zxcblog.cates');
     Route::post('cates','CateController@catesUpdate')->name('zxcblog.catesUpdate');
-    Route::get('cateslist','CateController@index')->name('zxcblog.index');
+    Route::get('cateslist','CateController@index')->name('zxcblog.cateIndex');
     Route::post('cateposts','CateController@catePosts')->name('zxcblog.cateposts');
 });

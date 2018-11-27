@@ -13,6 +13,19 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <div class="form-inline">
+                        <div class="input-group mb-2" style="min-width: 200px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">分类</span>
+                            </div>
+                            <select class="form-control" id="cate_select" value="{{$cate_id}}" data-live-search="true">
+                                <option value="0">全部</option>
+                                @foreach($cates as $k=>$v)
+                                    <option value="{{$k}}" @if($cate_id==$k)selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover ">
                             <thead>
@@ -45,7 +58,7 @@
                         </table>
                     </div>
                     <div class="d-flex flex-column align-items-end">
-                        {{$posts->links('vendor.pagination.bootstrap-4')}}
+                        {{$posts->appends(['cate_id' => $cate_id])->links('vendor.pagination.bootstrap-4')}}
                     </div>
                 </div>
             </div>
@@ -54,6 +67,7 @@
 
     <div class="d-none">
         <a id="refresh" href="{{\Request::getUri()}}"></a>
+        <a id="redirect" href="#"></a>
     </div>
 </div>
 
@@ -87,6 +101,10 @@
         var id=$(this).data('id');
         destroy(id);
     });
+    $('#cate_select').change(function(){
+        var value = $(this).children('option:selected').val();
+        $('#redirect').attr('href',"{{route('zxcblog.lists')}}?cate_id="+value).click();
+    });
     function destroy(post_id){
         NProgress.start();
         var $tiper=$("#destroyModal .modal-body>i")
@@ -110,6 +128,14 @@
             }
         });
     }
+    $(function() {
+        $('.input-group>.bootstrap-select>select').each(function () {
+            var p = $(this).parent();
+            $(this).appendTo(p.parent());
+            p.remove();
+        });
+        $('.input-group>select').selectpicker();
+    })
 </script>
 
 @endsection

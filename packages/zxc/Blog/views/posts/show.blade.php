@@ -1,7 +1,7 @@
 @extends('zxcblog::layouts.frameapp')
 
 @section('content')
-
+<div class="container">
     <div class="row" id="mainvue">
         <div class="col-md-9 col-sm-12">
             <h3 class="text-center">{{$post->title}}</h3>
@@ -10,10 +10,6 @@
             </div>
             <textarea id="markdown-edit" class="d-none" type="hidden">{{$post->text}}</textarea>
             <div id="markdown-show" class="markdown-body"></div>
-            <div style="height:50px;"></div>
-            <div id="comments-list" class="mb-4">
-                <comments geturl="{{route('zxcblog.comments',['post'=>$post->id])}}" posturl="{{route('zxcblog.commentsAdd',['post'=>$post->id])}}"></comments>
-            </div>
         </div>
         <div class="col-md-3 d-sm-none d-md-block">
             <nav id="markdown-menu" class="navbar navbar-light bg-light sticky-top border rounded flex-column align-items-start">
@@ -22,6 +18,15 @@
             </nav>
         </div>
     </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="container">
+        <div id="comments-list">
+            <comments geturl="{{route('zxcblog.comments',['post'=>$post->id])}}" posturl="{{route('zxcblog.commentsAdd',['post'=>$post->id])}}"></comments>
+        </div>
+    </div>
+</div>
     @include('zxcblog::mdeditor.menuJsVue')
     @include('zxcblog::comment.listJsVue')
     <script type="application/javascript">
