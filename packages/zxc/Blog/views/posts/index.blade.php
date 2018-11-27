@@ -1,7 +1,7 @@
 @extends('zxcframe::layouts.app')
 
 @section('content')
-
+<div pjax-content>
     <div class="row">
         <div class="col-sm-12">
             <div class="box box-primary">
@@ -17,7 +17,7 @@
                             <select class="form-control" id="cate_select" value="{{$cate_id}}" data-live-search="true">
                                 <option value="0">全部</option>
                                 @foreach($cates as $k=>$v)
-                                    <option value="{{$k}}">{{$v}}</option>
+                                    <option value="{{$k}}" @if($cate_id==$k)selected @endif>{{$v}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -48,24 +48,25 @@
                 </div>
             </div>
         </div>
-        <div class="d-none">
-            <a id="redirect" href="#"></a>
-        </div>
     </div>
 
-    <script type="application/javascript">
-        $('#cate_select').change(function(){
-            var value = $(this).children('option:selected').val();
-            $('#redirect').attr('href',"{{route('zxcblog.index')}}?cate_id="+value).click();
+    <div class="d-none">
+        <a id="redirect" href="#"></a>
+    </div>
+</div>
+<script type="application/javascript">
+    $('#cate_select').change(function(){
+        var value = $(this).children('option:selected').val();
+        $('#redirect').attr('href',"{{route('zxcblog.index')}}?cate_id="+value).click();
+    });
+    $(function() {
+        $('.input-group>.bootstrap-select>select').each(function () {
+            var p = $(this).parent();
+            $(this).appendTo(p.parent());
+            p.remove();
         });
-        $(function() {
-            $('.input-group>.bootstrap-select>select').each(function () {
-                var p = $(this).parent();
-                $(this).appendTo(p.parent());
-                p.remove();
-            });
-            $('.input-group>select').selectpicker();
-        })
-    </script>
+        $('.input-group>select').selectpicker();
+    })
+</script>
 
 @endsection
