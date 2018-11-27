@@ -1,7 +1,7 @@
 @extends('zxcframe::layouts.app')
 
 @section('content')
-<div pjax-content>
+<div>
 
     <div class="row">
         <div class="col-sm-12">
@@ -9,7 +9,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">博客列表</h3>
                     <div class="box-tools pull-right">
-                        <a class="btn btn-sm btn-primary" href="{{route('zxcblog.edit')}}">新建博客</a>
+                        <a pjax class="btn btn-sm btn-primary" href="{{route('zxcblog.edit')}}">新建博客</a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -47,8 +47,9 @@
                                     <td class="text-nowrap">{{$post->created_at}}</td>
                                     <td class="text-nowrap">{{$post->updated_at}}</td>
                                     <td class="text-nowrap">
+                                        <a class="btn btn-sm btn-success" href="{{route('zxcblog.show',['post'=>$post->id])}}" target="_blank"><i class="fa fa-eye fa-fw"></i></a>
                                         @can('zxcblog.update-post',$post)
-                                        <a class="btn btn-sm btn-primary" href="{{route('zxcblog.edit',['post'=>$post->id])}}"><i class="fa fa-pencil fa-fw"></i></a>
+                                        <a pjax class="btn btn-sm btn-primary" href="{{route('zxcblog.edit',['post'=>$post->id])}}"><i class="fa fa-pencil fa-fw"></i></a>
                                         <button class="btn btn-sm btn-danger" data-id="{{$post->id}}" data-toggle="modal" data-target="#destroyModal"><i class="fa fa-trash-o fa-fw"></i></button>
                                         @endcan
                                     </td>
@@ -57,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="d-flex flex-column align-items-end">
+                    <div class="d-flex flex-column align-items-end" pjax-content>
                         {{$posts->appends(['cate_id' => $cate_id])->links('vendor.pagination.bootstrap-4')}}
                     </div>
                 </div>

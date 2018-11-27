@@ -5,6 +5,7 @@ Route::middleware(Zxc\Frame\Http\Middleware\MenuVerify::class)->group(function()
     Route::get('posts', 'PostController@index')->name('zxcblog.index');
     Route::get('home', 'PostController@index')->name('zxcblog.home');
     Route::get('posts/{post}', 'PostController@show')->where('post', '[0-9]+')->name('zxcblog.show');
+    Route::get('download', 'DownloadController@download')->name('zxcblog.download');
 });
 //评论
 Route::get('comments/{post}', 'CommentController@getList')->where('post', '[0-9]+')->name('zxcblog.comments');

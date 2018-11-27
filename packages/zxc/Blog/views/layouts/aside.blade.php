@@ -30,7 +30,13 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" id="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN NAVIGATION</li>
+            <li class="header">BLOG CATEGORIES</li>
+            <li>
+                <a href="#" onclick="window.open('{{route('zxcblog.home')}}')">
+                    <i class="fa fa-home"></i>
+                    <span>首页</span>
+                </a>
+            </li>
             <?php
                 $traverse = function ($categories) use (&$traverse,$path) {
                     foreach ($categories as $nav) {
@@ -67,7 +73,7 @@
                                     <?php
                                         foreach ($nav->posts as $post) {
                                     ?>
-                                            <li>
+                                            <li class="@if($path->find($post->id)) active @endif">
                                                 <a href="{{route('zxcblog.show',['post'=>$post->id])}}">
                                                     <i class="fa {{$post->fa or 'fa-circle-o'}}"></i>
                                                     <span>{{$post->title}}</span>

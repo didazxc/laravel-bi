@@ -42,7 +42,7 @@
                             </a>
                         @endforeach
                     </div>
-                    <div class="d-flex flex-column align-items-end mt-2">
+                    <div class="d-flex flex-column align-items-end mt-2" pjax-content>
                         {{$posts->appends(['cate_id' => $cate_id])->links('vendor.pagination.bootstrap-4')}}
                     </div>
                 </div>

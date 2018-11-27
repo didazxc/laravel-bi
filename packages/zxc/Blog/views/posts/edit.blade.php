@@ -19,6 +19,18 @@
                     @endforeach
                 </select>
             </div>
+
+            <div class="form-group btn btn-success mr-2" id="aetherupload-wrapper" onclick="file.click()"><!--组件最外部需要有一个名为aetherupload-wrapper的id，用以包装组件-->
+                <div class="controls" >
+                    <input type="file" id="file" hidden onchange="aetherupload(this,'file').success(someCallback).upload()"/>
+                    <div hidden class="progress " style="height: 6px;margin-bottom: 2px;margin-top: 10px;width: 200px;">
+                        <div id="progressbar" style="background:blue;height:6px;width:0;"></div>
+                    </div>
+                    <span id="output">上传文件</span>
+                    <input type="hidden" name="file1" id="savedpath" >
+                </div>
+            </div>
+
             <button class="btn btn-primary" type="submit">保存</button>
         </div>
 
@@ -41,8 +53,9 @@
             window.history.pushState({},0,thisurl);
         }
         //等整体页面加载一段时间后再初始化editor组件
+        var vuedemo='';
         function initEditor() {
-            new Vue({el: '#components-demo'});
+            vuedemo=new Vue({el: '#components-demo'});
         }
         $(function(){
             $('.input-group>.bootstrap-select>select').each(function(){
@@ -80,5 +93,22 @@
     </script>
     @include('zxcblog::mdeditor.editorJsVue')
     @include('zxcblog::mdeditor.syncScrollJs')
+    <script src="{{ URL::asset('js/spark-md5.min.js') }}"></script><!--需要引入spark-md5.min.js-->
+    <script src="{{ URL::asset('js/aetherupload.js') }}"></script><!--需要引入aetherupload.js-->
+    <script>
+        // success(callback)中声名的回调方法需在此定义，参数callback可为任意名称，此方法将会在上传完成后被调用
+        // 可使用this对象获得fileName,fileSize,uploadBaseName,uploadExt,subDir,group,savedPath等属性的值
+        someCallback = function(){
+            var file=""
+            if(['BMP','JPG','JPEG','PNG','GIF'].includes(this.uploadExt.toUpperCase())){
+                file='!['+this.fileName+'](/aetherupload/display/'+this.savedPath+' "'+ this.fileName+'")'
+            }else{
+                file="["+this.fileName+"("+parseFloat(this.fileSize / (1000 * 1000)).toFixed(2)+"MB)](/aetherupload/download/"+this.savedPath+"/"+this.fileName+")"
+            }
+            vuedemo.$children[0].editor.doc.replaceSelection(file)
+            $('#file').removeAttr('disabled');
+            $('#output').text("继续上传");
+        }
+    </script>
 @endsection
 
