@@ -37,6 +37,12 @@
                     <span>首页</span>
                 </a>
             </li>
+            <li>
+                <a href="#" onclick="window.open('{{route('zxcblog.lists')}}')">
+                    <i class="fa fa-edit"></i>
+                    <span>后台</span>
+                </a>
+            </li>
             <?php
                 $traverse = function ($categories) use (&$traverse,$path) {
                     foreach ($categories as $nav) {
