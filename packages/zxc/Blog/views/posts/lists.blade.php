@@ -68,7 +68,7 @@
 
     <div class="d-none">
         <a id="refresh" href="{{\Request::getUri()}}"></a>
-        <a id="redirect" href="#"></a>
+        <a pjax id="redirect" href="#"></a>
     </div>
 </div>
 

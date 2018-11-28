@@ -15,7 +15,7 @@
                 </div>
                 <select class="form-control" name="cate_id" value="{{$post->cate_id}}" data-live-search="true">
                     @foreach($cates as $k=>$v)
-                        <option value="{{$k}}">{{$v}}</option>
+                        <option value="{{$k}}" @if($post->cate_id==$k)selected @endif>{{$v}}</option>
                     @endforeach
                 </select>
             </div>
