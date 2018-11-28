@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row" id="mainvue">
         <div class="col-md-9 col-sm-12">
-            <h3 class="text-center">{{$post->title}}</h3>
+            <h1 class="text-center">{{$post->title}}</h1>
             <div class="text-center">
                 <small class="text-muted">{{$post->user->name or ''}} 创建于：{{$post->created_at}}</small>
             </div>
