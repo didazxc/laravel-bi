@@ -82,10 +82,12 @@ md.getInitedMd=function(){
     const renderInlineFunc = mdHtml.renderer.renderInline.bind(mdHtml.renderer);
     mdHtml.renderer.renderInline = function (tokens, options, env) {
         let result = renderInlineFunc(tokens, options, env);
-        if (tokens[0].content.startsWith('[ ] ')) {
-            return '<input type="checkbox" disabled /> ' + result.substr(4)
-        } else if (tokens[0].content.startsWith('[x] ')) {
-            return '<input type="checkbox" disabled checked /> ' + result.substr(4)
+        if(tokens[0]){
+            if (tokens[0].content.startsWith('[ ] ')) {
+                return '<input type="checkbox" disabled /> ' + result.substr(4)
+            } else if (tokens[0].content.startsWith('[x] ')) {
+                return '<input type="checkbox" disabled checked /> ' + result.substr(4)
+            }
         }
         return result
     };
