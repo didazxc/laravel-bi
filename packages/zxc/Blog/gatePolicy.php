@@ -3,7 +3,7 @@
 use Zxc\Blog\Models\Post;
 
 Gate::define('zxcblog.update-post', function ($user, $post) {
-    return $user->id == $post->user_id;
+    return $user->hasRole('admin') || $user->id == $post->user_id;
 });
 
 Gate::define('zxcblog.update-post-ids', function ($user, $post_ids) {

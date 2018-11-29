@@ -50,7 +50,7 @@
                                         <a class="btn btn-sm btn-success" href="{{route('zxcblog.show',['post'=>$post->id])}}" target="_blank"><i class="fa fa-eye fa-fw"></i></a>
                                         @can('zxcblog.update-post',$post)
                                         <a pjax class="btn btn-sm btn-primary" href="{{route('zxcblog.edit',['post'=>$post->id])}}"><i class="fa fa-pencil fa-fw"></i></a>
-                                        <button class="btn btn-sm btn-danger" data-id="{{$post->id}}" data-toggle="modal" data-target="#destroyModal"><i class="fa fa-trash-o fa-fw"></i></button>
+                                        <button hidden class="btn btn-sm btn-danger" data-id="{{$post->id}}" data-toggle="modal" data-target="#destroyModal"><i class="fa fa-trash-o fa-fw"></i></button>
                                         @endcan
                                     </td>
                                 </tr>

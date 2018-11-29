@@ -41,10 +41,11 @@ class PostController extends Controller
         return view('zxcblog::posts.lists',compact('posts','cates','cate_id'));
     }
 
+    //不许删除
     public function postDestroy(Request $request)
     {
-        if($request->ajax() &&
-            $request->has("posts")){
+        return 0;
+        if($request->ajax() && $request->has("posts")){
             $posts=$request->post("posts");
             $this->authorize('zxcblog.update-post-ids', [[$posts]]);
             return Post::destroy($posts);
@@ -77,7 +78,8 @@ class PostController extends Controller
 
     public function postUpdate(Request $request)
     {
-        $post_id=$request->route('post',0);
+        //$post_id=$request->route('post',0);
+        $post_id=$request->input('id',0);
         if($post_id>0){
             $post=Post::find($post_id);
             if(!$post){
